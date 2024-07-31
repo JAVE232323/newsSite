@@ -3,7 +3,8 @@ const sequelize = require('./db')
 const router = require('./routes/index')
 const cors = require('cors')
 
-const userRouter = require('./routes/userRouter')
+const root = require('./routes'),
+    userRouter = require('./routes/userRouter')
 
 const PORT = process.env.PORT || 5000
 
@@ -12,16 +13,9 @@ app.use(cors())
 app.use(express.json())
 app.use('/api', router)
 
-
+app.use('/', root)
 app.use('/user', userRouter)
 
-app.get('/', (req, res) => {
-    res.status(200).json({message: "working"})
-})
-
-app.post('/', (req, res) =>{
-    res.send('Got a POST request');
-})
 
 
 const start = async () => {

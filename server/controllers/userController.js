@@ -1,6 +1,6 @@
 class UserController{
     async registration(req, res){
-        
+        res.json({message: 'registration '})
     }
     async login(req, res){
 
